@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using CleanApi.Application.Common.Interfaces;
+using CleanApi.Domain.Entities;
 using CleanApi.Infrastructure.Identity;
 using CleanApi.Infrastructure.Persistence.Interceptors;
 using Duende.IdentityServer.EntityFramework.Options;
@@ -10,7 +11,7 @@ using Microsoft.Extensions.Options;
 
 namespace CleanApi.Infrastructure.Persistence;
 
-public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, IApplicationDbContext
+public class ApplicationDbContext : ApiAuthorizationDbContext<CustomIdentityUser>, IApplicationDbContext
 {
     private readonly AuditableEntitySaveChangesInterceptor _auditableEntitySaveChangesInterceptor;
 
@@ -23,7 +24,9 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, 
     {
         _auditableEntitySaveChangesInterceptor = auditableEntitySaveChangesInterceptor;
     }
-    
+
+    public DbSet<UserInfo> UserInfos => Set<UserInfo>();
+
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

@@ -8,13 +8,13 @@ namespace CleanApi.Infrastructure.Identity;
 
 public class IdentityService : IIdentityService
 {
-    private readonly UserManager<ApplicationUser> _userManager;
-    private readonly IUserClaimsPrincipalFactory<ApplicationUser> _userClaimsPrincipalFactory;
+    private readonly UserManager<CustomIdentityUser> _userManager;
+    private readonly IUserClaimsPrincipalFactory<CustomIdentityUser> _userClaimsPrincipalFactory;
     private readonly IAuthorizationService _authorizationService;
 
     public IdentityService(
-        UserManager<ApplicationUser> userManager,
-        IUserClaimsPrincipalFactory<ApplicationUser> userClaimsPrincipalFactory,
+        UserManager<CustomIdentityUser> userManager,
+        IUserClaimsPrincipalFactory<CustomIdentityUser> userClaimsPrincipalFactory,
         IAuthorizationService authorizationService)
     {
         _userManager = userManager;
@@ -31,11 +31,7 @@ public class IdentityService : IIdentityService
 
     public async Task<(Result Result, string UserId)> CreateUserAsync(string userName, string password)
     {
-        var user = new ApplicationUser
-        {
-            UserName = userName,
-            Email = userName,
-        };
+        var user = new CustomIdentityUser { UserName = userName, Email = userName, };
 
         var result = await _userManager.CreateAsync(user, password);
 
@@ -47,6 +43,18 @@ public class IdentityService : IIdentityService
         var user = _userManager.Users.SingleOrDefault(u => u.Id == userId);
 
         return user != null && await _userManager.IsInRoleAsync(user, role);
+    }
+
+    public async Task<bool> CheckPasswordAsync(string userId, string password)
+    {
+        var user = _userManager.Users.SingleOrDefault(u => u.Id == userId);
+
+        if (user != null)
+        {
+            return await _userManager.CheckPasswordAsync(user, password);
+        }
+
+        return false;
     }
 
     public async Task<bool> AuthorizeAsync(string userId, string policyName)
@@ -72,9 +80,9 @@ public class IdentityService : IIdentityService
         return user != null ? await DeleteUserAsync(user) : Result.Success();
     }
 
-    public async Task<Result> DeleteUserAsync(ApplicationUser user)
+    public async Task<Result> DeleteUserAsync(CustomIdentityUser userIdentity)
     {
-        var result = await _userManager.DeleteAsync(user);
+        var result = await _userManager.DeleteAsync(userIdentity);
 
         return result.ToApplicationResult();
     }

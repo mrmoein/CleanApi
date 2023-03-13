@@ -38,4 +38,8 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapControllerRoute(
+    "default",
+    "{controller}/{action=Index}/{id?}");
+
 app.Run();

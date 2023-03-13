@@ -3,6 +3,8 @@ using CleanApi.Infrastructure.Identity;
 using CleanApi.Infrastructure.Persistence;
 using CleanApi.Infrastructure.Persistence.Interceptors;
 using CleanApi.Infrastructure.Services;
+using CleanApi.Application.Common.Interfaces;
+using CleanApi.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -33,12 +35,13 @@ public static class ConfigureServices
         services.AddScoped<ApplicationDbContextInitialiser>();
 
         services
-            .AddDefaultIdentity<ApplicationUser>()
+            .AddDefaultIdentity<CustomIdentityUser>()
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
         services.AddTransient<IDateTime, DateTimeService>();
         services.AddTransient<IIdentityService, IdentityService>();
+        services.AddTransient<ITokenService, TokenService>();
 
         services.AddAuthentication();
         
