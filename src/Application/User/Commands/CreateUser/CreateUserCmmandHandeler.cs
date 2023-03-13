@@ -7,16 +7,16 @@ using CleanApi.Domain.Entities;
 using FluentValidation.Results;
 using MediatR;
 
-namespace CleanApi.Application.User.Commands.RegisterUser;
+namespace CleanApi.Application.User.Commands.CreateUser;
 
 public class
-    RegisterUserCommandHandler : IRequestHandler<RegisterUserCommandRequest, ServiceResult<RegisterUserCommandResponse>>
+    CreateUserCommandHandler : IRequestHandler<CreateUserCommandRequest, ServiceResult<CreateUserCommandResponse>>
 {
     private readonly IApplicationDbContext _context;
     private readonly ITokenService _tokenService;
     private readonly IIdentityService _identityService;
 
-    public RegisterUserCommandHandler(IApplicationDbContext context, ITokenService tokenService,
+    public CreateUserCommandHandler(IApplicationDbContext context, ITokenService tokenService,
         IIdentityService identityService)
     {
         _context = context;
@@ -24,7 +24,7 @@ public class
         _identityService = identityService;
     }
 
-    public async Task<ServiceResult<RegisterUserCommandResponse>> Handle(RegisterUserCommandRequest request,
+    public async Task<ServiceResult<CreateUserCommandResponse>> Handle(CreateUserCommandRequest request,
         CancellationToken cancellationToken)
     {
         (Result identityResult, string userId) =
@@ -44,6 +44,6 @@ public class
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return ServiceResult.Success(new RegisterUserCommandResponse { UserId = userId });
+        return ServiceResult.Success(new CreateUserCommandResponse { UserId = userId });
     }
 }

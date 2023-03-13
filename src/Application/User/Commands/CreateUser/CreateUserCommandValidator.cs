@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using CleanApi.Application.Common.Interfaces;
 
-namespace CleanApi.Application.User.Commands.RegisterUser;
+namespace CleanApi.Application.User.Commands.CreateUser;
 
-public class RegisterUserCommandValidator : AbstractValidator<RegisterUserCommandRequest>
+public class CreateUserCommandValidator : AbstractValidator<CreateUserCommandRequest>
 {
-    public RegisterUserCommandValidator()
+    public CreateUserCommandValidator()
     {
         RuleFor(v => v.UserName)
             .EmailAddress()
