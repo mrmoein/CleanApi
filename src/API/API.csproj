@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>CleanApi.API</RootNamespace>
+        <AssemblyName>CleanApi.API</AssemblyName>
+        <Nullable>enable</Nullable>
+        <IsPackable>true</IsPackable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>efad71c6-743c-4b87-9de8-f26d77146f6d</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Application\Application.csproj" />
+        <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.14" />
+        <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.14" />
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="6.0.14" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="ClientApp\angular.json" />
+      <_ContentIncludedByDefault Remove="ClientApp\package-lock.json" />
+      <_ContentIncludedByDefault Remove="ClientApp\package.json" />
+      <_ContentIncludedByDefault Remove="ClientApp\tsconfig.app.json" />
+      <_ContentIncludedByDefault Remove="ClientApp\tsconfig.json" />
+      <_ContentIncludedByDefault Remove="ClientApp\tsconfig.spec.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="wwwroot\favicon.ico" />
+    </ItemGroup>
+</Project>
