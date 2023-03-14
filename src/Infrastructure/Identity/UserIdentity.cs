@@ -2,6 +2,6 @@
 
 namespace CleanApi.Infrastructure.Identity;
 
-public class CustomIdentityUser : IdentityUser
+public class ApplicationUser : IdentityUser
 {
 }

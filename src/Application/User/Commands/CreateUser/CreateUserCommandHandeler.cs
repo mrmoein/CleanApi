@@ -1,10 +1,7 @@
-﻿using System.Security;
-using CleanApi.Application.Common.Exceptions;
+﻿using CleanApi.Application.Common.Exceptions;
 using CleanApi.Application.Common.Interfaces;
 using CleanApi.Application.Common.Models;
-using CleanApi.Application.Common.Interfaces;
 using CleanApi.Domain.Entities;
-using FluentValidation.Results;
 using MediatR;
 
 namespace CleanApi.Application.User.Commands.CreateUser;

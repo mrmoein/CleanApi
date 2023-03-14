@@ -1,6 +1,5 @@
 ﻿using CleanApi.Application.Common.Interfaces;
 using CleanApi.Application.Common.Models;
-using CleanApi.Application.Common.Interfaces;
 using MediatR;
 
 namespace CleanApi.Application.Authentication.Commands.Login;

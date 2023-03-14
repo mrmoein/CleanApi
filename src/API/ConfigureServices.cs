@@ -17,15 +17,23 @@ public static class ConfigureServices
         services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
         services.AddHttpContextAccessor();
+        
+        // services.Configure<RouteOptions>(options =>
+        // {
+        //     // options.LowercaseUrls = true; 
+        //     options.LowercaseQueryStrings = true;
+        // });
 
         services.AddHealthChecks()
             .AddDbContextCheck<ApplicationDbContext>();
-
+        
         services.AddControllers(options =>
             options.Filters.Add<ApiExceptionFilterAttribute>());
-
+        
         services.AddFluentValidationClientsideAdapters();
         
+        // services.AddEndpointsApiExplorer();
+
         services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanApi API", Version = "v1" });
@@ -39,7 +47,7 @@ public static class ConfigureServices
                     Type = SecuritySchemeType.ApiKey,
                     Scheme = "Bearer"
                 });
-
+        
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
@@ -53,6 +61,9 @@ public static class ConfigureServices
                         new List<string>()
                     }
                 });
+                
+                var swaggerPath = Path.Combine(AppContext.BaseDirectory, "CleanApi.API.xml");
+                c.IncludeXmlComments(swaggerPath);
             }
         );
         

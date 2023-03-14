@@ -11,7 +11,7 @@ using Microsoft.Extensions.Options;
 
 namespace CleanApi.Infrastructure.Persistence;
 
-public class ApplicationDbContext : ApiAuthorizationDbContext<CustomIdentityUser>, IApplicationDbContext
+public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, IApplicationDbContext
 {
     private readonly AuditableEntitySaveChangesInterceptor _auditableEntitySaveChangesInterceptor;
 

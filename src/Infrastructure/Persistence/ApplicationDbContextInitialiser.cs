@@ -12,11 +12,11 @@ public class ApplicationDbContextInitialiser
 {
     private readonly ILogger<ApplicationDbContextInitialiser> _logger;
     private readonly ApplicationDbContext _context;
-    private readonly UserManager<CustomIdentityUser> _userManager;
+    private readonly UserManager<ApplicationUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
 
     public ApplicationDbContextInitialiser(ILogger<ApplicationDbContextInitialiser> logger,
-        ApplicationDbContext context, UserManager<CustomIdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
     {
         _logger = logger;
         _context = context;
@@ -58,7 +58,7 @@ public class ApplicationDbContextInitialiser
         _context.UserInfos.Add(userInfo);
     }
 
-    private async Task AddIdentityUserAsync(CustomIdentityUser userAccount, string password, string role)
+    private async Task AddIdentityUserAsync(ApplicationUser userAccount, string password, string role)
     {
         await _userManager.CreateAsync(userAccount, password);
         await _userManager.AddToRolesAsync(userAccount, new[] { role });
