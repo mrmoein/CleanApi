@@ -13,28 +13,28 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Application\Application.csproj" />
-        <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+        <ProjectReference Include="..\Application\Application.csproj"/>
+        <ProjectReference Include="..\Infrastructure\Infrastructure.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
-        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.14" />
-        <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.14" />
-        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="6.0.14" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.14"/>
+        <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.14"/>
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="6.0.14"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <_ContentIncludedByDefault Remove="ClientApp\angular.json" />
-      <_ContentIncludedByDefault Remove="ClientApp\package-lock.json" />
-      <_ContentIncludedByDefault Remove="ClientApp\package.json" />
-      <_ContentIncludedByDefault Remove="ClientApp\tsconfig.app.json" />
-      <_ContentIncludedByDefault Remove="ClientApp\tsconfig.json" />
-      <_ContentIncludedByDefault Remove="ClientApp\tsconfig.spec.json" />
+        <_ContentIncludedByDefault Remove="ClientApp\angular.json"/>
+        <_ContentIncludedByDefault Remove="ClientApp\package-lock.json"/>
+        <_ContentIncludedByDefault Remove="ClientApp\package.json"/>
+        <_ContentIncludedByDefault Remove="ClientApp\tsconfig.app.json"/>
+        <_ContentIncludedByDefault Remove="ClientApp\tsconfig.json"/>
+        <_ContentIncludedByDefault Remove="ClientApp\tsconfig.spec.json"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="wwwroot\favicon.ico" />
+        <Content Remove="wwwroot\favicon.ico"/>
     </ItemGroup>
 </Project>

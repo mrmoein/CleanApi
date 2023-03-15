@@ -10,10 +10,10 @@ namespace CleanApi.Infrastructure.Persistence;
 
 public class ApplicationDbContextInitialiser
 {
-    private readonly ILogger<ApplicationDbContextInitialiser> _logger;
     private readonly ApplicationDbContext _context;
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly ILogger<ApplicationDbContextInitialiser> _logger;
     private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
     public ApplicationDbContextInitialiser(ILogger<ApplicationDbContextInitialiser> logger,
         ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
@@ -52,7 +52,7 @@ public class ApplicationDbContextInitialiser
             throw;
         }
     }
-    
+
     private void AddUserInfo(UserInfo userInfo)
     {
         _context.UserInfos.Add(userInfo);
@@ -63,7 +63,7 @@ public class ApplicationDbContextInitialiser
         await _userManager.CreateAsync(userAccount, password);
         await _userManager.AddToRolesAsync(userAccount, new[] { role });
     }
-    
+
     private async Task AddRoleAsync(IdentityRole role)
     {
         if (!_roleManager.Roles.Any(r => r.Name == role.Name))
@@ -79,7 +79,7 @@ public class ApplicationDbContextInitialiser
             await AddRoleAsync(new IdentityRole(Roles.Admin.ToString()));
             await AddRoleAsync(new IdentityRole(Roles.User.ToString()));
         }
-        
+
         if (!_userManager.Users.Any())
         {
             const string sharedPassword = "Test@123";

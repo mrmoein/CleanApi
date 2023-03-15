@@ -3,7 +3,7 @@ using CleanApi.Domain.Entities;
 
 namespace CleanApi.Application.User.Queries.GetCurrent;
 
-public class GetCurrentCommandResponse : IMapFrom<UserInfo>
+public class GetCurrentUserQueryResponse : IMapFrom<UserInfo>
 {
     public string Id { get; set; } = string.Empty;
 
@@ -14,6 +14,6 @@ public class GetCurrentCommandResponse : IMapFrom<UserInfo>
     public string FullName { get; set; } = string.Empty;
 
     public string UserName { get; set; } = string.Empty;
-    
+
     public IList<string> Roles { get; set; } = new List<string>();
 }

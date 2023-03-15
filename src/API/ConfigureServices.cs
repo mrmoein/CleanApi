@@ -1,7 +1,7 @@
 ﻿using CleanApi.API.Filters;
+using CleanApi.API.Services;
 using CleanApi.Application.Common.Interfaces;
 using CleanApi.Infrastructure.Persistence;
-using CleanApi.API.Services;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
@@ -17,7 +17,7 @@ public static class ConfigureServices
         services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
         services.AddHttpContextAccessor();
-        
+
         // services.Configure<RouteOptions>(options =>
         // {
         //     // options.LowercaseUrls = true; 
@@ -26,12 +26,12 @@ public static class ConfigureServices
 
         services.AddHealthChecks()
             .AddDbContextCheck<ApplicationDbContext>();
-        
+
         services.AddControllers(options =>
             options.Filters.Add<ApiExceptionFilterAttribute>());
-        
+
         services.AddFluentValidationClientsideAdapters();
-        
+
         // services.AddEndpointsApiExplorer();
 
         services.AddSwaggerGen(c =>
@@ -47,7 +47,7 @@ public static class ConfigureServices
                     Type = SecuritySchemeType.ApiKey,
                     Scheme = "Bearer"
                 });
-        
+
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
@@ -61,12 +61,12 @@ public static class ConfigureServices
                         new List<string>()
                     }
                 });
-                
-                var swaggerPath = Path.Combine(AppContext.BaseDirectory, "CleanApi.API.xml");
+
+                string swaggerPath = Path.Combine(AppContext.BaseDirectory, "CleanApi.API.xml");
                 c.IncludeXmlComments(swaggerPath);
             }
         );
-        
+
         // Customise default API behaviour
         services.Configure<ApiBehaviorOptions>(options =>
             options.SuppressModelStateInvalidFilter = true);

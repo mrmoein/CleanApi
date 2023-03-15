@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using CleanApi.Application.Common.Interfaces;
 
 namespace CleanApi.Application.Authentication.Commands.Login;
 

@@ -13,7 +13,7 @@ public static class UserInfoSeedModel
         FirstName = "Big",
         LastName = "Boss"
     };
-    
+
     public static readonly UserInfo User = new()
     {
         CreatedBy = "Migration",

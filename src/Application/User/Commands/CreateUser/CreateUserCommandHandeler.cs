@@ -10,8 +10,8 @@ public class
     CreateUserCommandHandler : IRequestHandler<CreateUserCommandRequest, ServiceResult<CreateUserCommandResponse>>
 {
     private readonly IApplicationDbContext _context;
-    private readonly ITokenService _tokenService;
     private readonly IIdentityService _identityService;
+    private readonly ITokenService _tokenService;
 
     public CreateUserCommandHandler(IApplicationDbContext context, ITokenService tokenService,
         IIdentityService identityService)
@@ -32,7 +32,7 @@ public class
             throw new ValidationException(identityResult.Errors);
         }
 
-        var userInfo = new UserInfo
+        UserInfo userInfo = new UserInfo
         {
             Id = userId, UserName = request.UserName, FirstName = request.FirstName, LastName = request.LastName
         };

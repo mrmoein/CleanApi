@@ -1,5 +1,4 @@
 ﻿using System.Security.Claims;
-
 using CleanApi.Application.Common.Interfaces;
 
 namespace CleanApi.API.Services;

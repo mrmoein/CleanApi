@@ -6,10 +6,10 @@ namespace CleanApi.API.Controllers;
 
 public class AuthenticationController : ApiControllerBase
 {
-    // /// <summary>
-    // /// Login
-    // /// </summary>
-    // /// <remarks>Create Login JWT</remarks>
+    /// <summary>
+    /// Login
+    /// </summary>
+    /// <remarks>Create Login JWT</remarks>
     [HttpPost]
     public async Task<ActionResult<ServiceResult<LoginCommandResponse>>> Login(LoginCommandRequest request)
     {

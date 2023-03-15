@@ -19,7 +19,7 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, 
         DbContextOptions<ApplicationDbContext> options,
         IOptions<OperationalStoreOptions> operationalStoreOptions,
         IMediator mediator,
-        AuditableEntitySaveChangesInterceptor auditableEntitySaveChangesInterceptor) 
+        AuditableEntitySaveChangesInterceptor auditableEntitySaveChangesInterceptor)
         : base(options, operationalStoreOptions)
     {
         _auditableEntitySaveChangesInterceptor = auditableEntitySaveChangesInterceptor;
